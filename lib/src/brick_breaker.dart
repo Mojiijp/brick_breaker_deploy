@@ -13,13 +13,15 @@ import 'config.dart'; // นำเข้าไฟล์ config.dart
 enum PlayState { welcome, playing, gameOver, won }
 
 class BrickBreaker extends FlameGame
-  with HasCollisionDetection, KeyboardEvents, TapDetector  { //HasCollisionDetection  ตรวจจับการชนของวัตถุ
-  BrickBreaker() : super(
-    camera: CameraComponent.withFixedResolution(
-      width: gameWidth,
-      height: gameHeight,
-    ),
-  );
+    with HasCollisionDetection, KeyboardEvents, TapDetector {
+  //HasCollisionDetection  ตรวจจับการชนของวัตถุ
+  BrickBreaker()
+      : super(
+          camera: CameraComponent.withFixedResolution(
+            width: gameWidth,
+            height: gameHeight,
+          ),
+        );
 
   final ValueNotifier<int> score = ValueNotifier(0);
   final rand = math.Random();
@@ -64,13 +66,13 @@ class BrickBreaker extends FlameGame
     score.value = 0;
 
     world.add(Ball(
-        difficultyModifier: difficultyModifier,
-        radius: ballRadius,
-        position: size / 3,
-        velocity: Vector2((rand.nextDouble() - 0.5) * width, height * 0.2)
-            .normalized()
-          ..scale(height / 3)) //speed of ball
-    );
+            difficultyModifier: difficultyModifier,
+            radius: ballRadius,
+            position: size / 3,
+            velocity: Vector2((rand.nextDouble() - 0.5) * width, height * 0.2)
+                .normalized()
+              ..scale(height / 3)) //speed of ball
+        );
 
     world.add(Bat(
         size: Vector2(batWidth, batHeight),
