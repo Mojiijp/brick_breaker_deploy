@@ -42,7 +42,7 @@ jobs:
 
       # Build Flutter Web
       - name: Build Flutter Web
-        run: flutter build web --release --base-href /your-repo-name/
+        run: flutter build web --release --base-href=/brick_breaker_deploy/
 
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
