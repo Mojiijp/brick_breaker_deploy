@@ -1,17 +1,52 @@
-name: Gh-Pages
+# name: Gh-Pages
+
+# on:
+#   push:
+#     branches: [ main ]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: subosito/flutter-action@v2
+#       - uses: bluefireteam/flutter-gh-pages@v8
+#         with:
+#           baseHref: /brick_breaker_deploy/
+#           webRenderer: canvaskit
+
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: 
+      - main  # หรือ branch ที่คุณต้องการ deploy
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
-      - uses: bluefireteam/flutter-gh-pages@v8
+      # Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Setup Flutter
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+
+      # Install dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # Build Flutter Web
+      - name: Build Flutter Web
+        run: flutter build web --release --base-href /your-repo-name/
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: bluefireteam/flutter-gh-pages@v8
         with:
-          baseHref: /brick_breaker_deploy/
-          webRenderer: canvaskit
+          baseHref: /brick_breaker_deploy/  # กำหนด base path ที่ GitHub Pages ใช้
+          webRenderer: auto
