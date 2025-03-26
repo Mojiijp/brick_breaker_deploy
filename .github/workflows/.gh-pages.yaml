@@ -49,4 +49,3 @@ jobs:
         uses: bluefireteam/flutter-gh-pages@v8
         with:
           baseHref: /brick_breaker_deploy/  # กำหนด base path ที่ GitHub Pages ใช้
-          webRenderer: auto
