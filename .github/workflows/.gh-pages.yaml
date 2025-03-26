@@ -12,6 +12,3 @@ jobs:
       - uses: actions/checkout@v4
       - uses: subosito/flutter-action@v2
       - uses: bluefireteam/flutter-gh-pages@v8
-        with:
-          baseHref: /brick_breaker_deploy/
-          webRenderer: auto
